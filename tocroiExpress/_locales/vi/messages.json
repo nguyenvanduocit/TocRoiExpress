@@ -1,0 +1,78 @@
+{
+   "defaultTitle": {
+      "description": "Default title to display",
+      "message": "Tóc Rối Express"
+   },
+   "extDesc": {
+      "description": "Extension description",
+      "message": "Tiện ích giúp bạn cập nhật nhanh nhất các status trên wall, các bài viết mới trên blog Gối Yêu ( goiyeu.net ) và Mùa Tóc Rối ( muatocroi.com ). Đồng thời chia sẻ các bài viết bạn thích với chúng tôi."
+   },
+   "extName": {
+      "description": "Extension name.",
+      "message": "Tóc Rối Express"
+   },
+   "off": {
+      "description": "",
+      "message": "Tắt"
+   },
+   "on": {
+      "description": "",
+      "message": "Mở"
+   },
+   "optionsTitle": {
+      "description": "header for options page",
+      "message": "Cài đặt"
+   },
+   "saveButton": {
+      "description": "Save button text",
+      "message": "Lưu"
+   },
+   "savedMsg": {
+      "description": "Message to display while saving",
+      "message": "Đang lưu thay đổi..."
+   },
+   "shareImage": {
+      "description": "Share image text",
+      "message": "Chia sẻ ảnh này"
+   },
+   "shareLink": {
+      "description": "Share link text",
+      "message": "Chia sẻ link này"
+   },
+   "sharePage": {
+      "description": "Share page text",
+      "message": "Chia sẻ trang này"
+   },
+   "shareSelected": {
+      "description": "Share selected text",
+      "message": "Chia sẻ nội dung này"
+   },
+   "strAllowSowNotify": {
+      "description": "Option text",
+      "message": "Hiển thị thông báo khi có bài nội dung mới."
+   },
+   "useSchedulerOption": {
+      "description": "Option text",
+      "message": "Tự động tắt thông báo"
+   },
+   "view": {
+      "description": "view new post",
+      "message": "Xem"
+   },
+   "ignore": {
+      "description": "ignore new post",
+      "message": "Bỏ qua"
+   },
+   "IntervalTime_text":{
+      "description": "ignore new post",
+      "message": "Thời gian cập nhật tin mới, đơn vị giây"
+   },
+   "source_text":{
+      "description": "option text",
+      "message": "Chế độ hiển thị, nguồn từ blog và fanpage của Mùa Tóc Rối và Gối yêu."
+   },
+   "numberError":{
+      "description": "option text",
+      "message": "Bạn cần nhập một con số."
+   }
+}
