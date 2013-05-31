@@ -1,0 +1,1 @@
+chrome.runtime.sendMessage({action: "newDefaultTab"}, function(response) {});

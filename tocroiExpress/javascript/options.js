@@ -3,10 +3,13 @@
 	var OFF_TEXT = '._offText';
 
 	var $AllowSowNotify_button;
+	var $AutoCloseNotification_button;
+
 	var $Source_select;
 	var $IntervalTime_text;
 
 	var AllowSowNotify;
+	var AllowCloseNotify;
 	var feedSource;
 	var IntervalTime;
 
@@ -14,6 +17,7 @@
 
 		//Now that DOM has loaded fill variables for toggles 
 		$AllowSowNotify_button = $("._AllowSowNotify_button");
+		$AutoCloseNotification_button = $("._AutoCloseNotification_button");
 		$Source_select = $("._source_select");
 		$IntervalTime_text = $("._IntervalTime_text");
 		//Internationalization, set header title
@@ -40,8 +44,25 @@
 
 		});
 
-		$Source_select.change(function(){
-			feedSource = $(this).val();
+		$AutoCloseNotification_button.click(function() {
+
+			if ($(this).find(OFF_TEXT).hasClass('active')) {
+				toggleButton($(this), true);
+				AllowCloseNotify = true;
+			} else {
+				toggleButton($(this), false);
+				AllowCloseNotify = false;
+			}
+
+		});
+
+		$Source_select.focusout(function(){
+			if($(this).val() == null)
+			{
+				$(this).val(feedSource.split(','));
+				alert(chrome.i18n.getMessage('sourceChooseError'));
+			}
+			feedSource = $(this).val().join(',');
 		});
 
 		$IntervalTime_text.focusout(function(){
@@ -66,6 +87,8 @@
 		$('#header').text(optionsTitle);
 
 		$('#AllowSowNotify_text').text(chrome.i18n.getMessage("strAllowSowNotify"));
+		$('#AutoCloseNotification_text').text(chrome.i18n.getMessage("strAllowCloseNotify"));
+
 		$('#IntervalTime_text').text(chrome.i18n.getMessage("IntervalTime_text"));
 		$('#source_text').text(chrome.i18n.getMessage("source_text"));
 
@@ -76,10 +99,18 @@
 		$("#saveButton").click(function() {
 
 			localStorage["AllowSowNotify"] = AllowSowNotify;
-			localStorage["feedSource"] = feedSource;
-			localStorage["IntervalTime"] = IntervalTime;
+			localStorage["AllowCloseNotify"] = AllowCloseNotify;
 
-			chrome.runtime.sendMessage({IntervalTime: IntervalTime}, function(response) {});
+			if(localStorage["feedSource"] != feedSource)
+			{
+				localStorage["feedSource"] = feedSource;
+				chrome.runtime.sendMessage({action: "feedSource"}, function(response) {});
+			}
+			if(localStorage["IntervalTime"] != IntervalTime)
+			{
+				localStorage["IntervalTime"] = IntervalTime;
+				chrome.runtime.sendMessage({action: "IntervalTime"}, function(response) {});
+			}
 
 			var status = $('#status');
 
@@ -118,16 +149,22 @@
 
 		//Load variables from chrome
 		AllowSowNotify = localStorage["AllowSowNotify"];
+		AllowCloseNotify = localStorage["AllowCloseNotify"];
+
 		feedSource = localStorage["feedSource"];
 		IntervalTime = localStorage["IntervalTime"];
 
 		if(AllowSowNotify === undefined){
 			AllowSowNotify = "true";
 		}
-		
+	
+		if(AllowCloseNotify === undefined){
+			AllowCloseNotify = "false";
+		}
+
 		if(feedSource == undefined)
 		{
-			feedSource = 0;
+			feedSource = "http://muatocroi.com/feed";
 		}
 
 		if(IntervalTime == undefined)
@@ -138,13 +175,14 @@
 		restoreOption($IntervalTime_text,IntervalTime,"");
 		restoreOption($Source_select,feedSource,"");
 		restoreOption($AllowSowNotify_button, AllowSowNotify, "false");
+		restoreOption($AutoCloseNotification_button, AllowCloseNotify, "false");
 
 	}
 
 	var restoreOption = function($toggleElement, currentVal, trueFalse) {
 		if($toggleElement == $Source_select)
 		{
-			$toggleElement.val(currentVal);
+			$toggleElement.val(currentVal.split(','));
 		}
 		else if ($toggleElement == $IntervalTime_text) 
 		{

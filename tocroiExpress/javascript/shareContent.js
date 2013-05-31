@@ -1,9 +1,7 @@
-const MUATOCROI_HOME_URL = 'muatocroi.com';  //Do not add http:// to URL
-var notID = 0;
-var isUrlHomePage = function(url) {
-	return url.match(new RegExp(
-			"^https?://(.+\.)?" + MUATOCROI_HOME_URL, "ig"));
-}
+
+var left = (screen.width/2)-(370/2);
+var top = (screen.height/2)-(410/2);
+
 
 var openHootlet = function(url, type, content) {
 	if (!url || !content) {
@@ -11,7 +9,7 @@ var openHootlet = function(url, type, content) {
 	}
 	var address = "http://muatocroi.com/addition/googlechromeEx/MTRNotification/";
 	address += "?source=" + encodeURIComponent(url) + "&type=" + encodeURIComponent(type) + "&content="+encodeURIComponent(content);
-	window.open(address, "Tóc Rối",'toolbar=no,scrollbars=0,toolbar=0,location=0,resizable=0,status=0,width=400,height=400');
+	window.open(address, "Tóc Rối",'scrollbars=0,toolbar=0,location=0,resizable=0,status=0,width=370,height=410,top='+top+', left='+left);
 	_gaq.push(['_trackEvent', "Context_"+type, 'clicked']);
 }
 

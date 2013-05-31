@@ -51,6 +51,10 @@
       "description": "Option text",
       "message": "Hiển thị thông báo khi có bài nội dung mới."
    },
+   "strAllowCloseNotify": {
+      "description": "Option text",
+      "message": "Tự động xóa thông báo."
+   },
    "useSchedulerOption": {
       "description": "Option text",
       "message": "Tự động tắt thông báo"
@@ -69,10 +73,14 @@
    },
    "source_text":{
       "description": "option text",
-      "message": "Chế độ hiển thị, nguồn từ blog và fanpage của Mùa Tóc Rối và Gối yêu."
+      "message": "Chọn nguồn dữ liệu bạn muốn theo dõi, ấn ctrl đồng thời click chuột để chọn nhiều nguồn."
    },
    "numberError":{
       "description": "option text",
       "message": "Bạn cần nhập một con số."
+   },
+   "sourceChooseError":{
+      "description": "option text",
+      "message": "Bạn cần chọn một nguồn dữ liệu"
    }
 }

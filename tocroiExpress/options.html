@@ -1,10 +1,10 @@
 <html>
 <head>
 <title></title>
-<link rel="stylesheet" href="options.css" type="text/css" media="all" />
+<link rel="stylesheet" href="style/options.css" type="text/css" media="all" />
 <meta charset="UTF-8" />
-<script src="jquery-1.7.2.min.js"></script>
-<script src="options.js"></script>>
+<script src="javascript/jquery-1.7.2.min.js"></script>
+<script src="javascript/options.js"></script>>
 </head>
 <body>
 	<div id="topLogoBar">
@@ -25,10 +25,24 @@
 						id="AllowSowNotify_text"> </span>
 				</div>
 				<div class="option">
+					<span title="Enable schedule" class="_AutoCloseNotification_button"> <span
+						class="_onText btn-lite-sta btn-l active toggle"></span><span
+						class="_offText btn-lite-sta btn-r"></span></span> <span class="label"
+						id="AutoCloseNotification_text"> </span>
+				</div>
+				<div class="option">
 					<span title="Enable schedule"> <input type="text" class="_IntervalTime_text btn-lite-sta btn-l active toggle " /></span> <span class="label"id="IntervalTime_text"> </span>
 				</div>
 				<div class="option">
-					<span title="Enable schedule" class="_scheduleToggle"> <select class="_source_select btn-lite-sta btn-l active toggle" ><option value=0>Cả facebook và blog feed</option><option value=1>Chỉ blog feed</option><option value=2>Chỉ facebook feed</option></select></span> <span class="label"id="source_text"> </span>
+					<span title="Enable schedule" class="_scheduleToggle">
+						<select class="_source_select btn-lite-sta btn-l active toggle" multiple="multiple">
+							<option value="http://goiyeu.net/feed">Gối yêu</option>
+							<option value="http://muatocroi.com/feed">Mùa Tóc Rối</option>
+							<option value="http://facebook.com/feeds/page.php?format=rss20&id=137877582890027">Gối yêu fanpage</option>
+							<option value="http://facebook.com/feeds/page.php?format=rss20&id=141920402552158">Mùa Tóc Rối Fanpage</option>
+						</select>
+					</span>
+					<span class="label"id="source_text"> </span>
 				</div>
 			</div>
 			<button id="saveButton" class="button"></button>

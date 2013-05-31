@@ -1,11 +1,23 @@
 {
    "background": {
-      "scripts": [ "jquery-1.7.2.min.js","shareContent.js","notifyLatest.js","analytics.js" ]
+      "scripts": [ "javascript/jquery-1.7.2.min.js","javascript/shareContent.js","javascript/notifyLatest.js","javascript/omnibox.js","javascript/analytics.js"]
    },
+   "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["javascript/jquery-1.7.2.min.js","javascript/contentScript.js"],
+      "run_at": "document_end"
+    }
+  ],
    "browser_action": {
       "default_icon": "images/icon_19.png",
-      "default_title": "__MSG_defaultTitle__"
+      "default_title": "__MSG_defaultTitle__",
+      "default_popup": "popup.html"
    },
+   "omnibox": { "keyword" : "truyenngan" },
+   "chrome_url_overrides" : {
+    "newtab": "newtabOverrides.html"
+  },
    "default_locale": "vi",
    "description": "__MSG_extDesc__",
    "icons": {
@@ -18,7 +30,7 @@
    "manifest_version": 2,
    "name": "__MSG_extName__",
    "options_page": "options.html",
-   "permissions": [ "tabs", "contextMenus","notifications","https://query.yahooapis.com/*","http://muatocroi.com/*", "https://docs.google.com/*"],
-   "content_security_policy": "script-src 'self' https://query.yahooapis.com https://ssl.google-analytics.com; object-src 'self'",
+   "permissions": [ "tabs", "contextMenus","notifications","http://*/*", "https://*/*"],
+   "content_security_policy": "script-src 'self' https://query.yahooapis.com https://*.google-analytics.com; object-src 'self'",
    "version": "1.0.1"
 }
